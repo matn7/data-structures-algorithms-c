@@ -1,0 +1,3 @@
+Hello World!
+Stack is a linear abstract data structure, where the elements could be added and deleted only at one end, called top of the stack.
+This is third line.

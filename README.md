@@ -58,6 +58,18 @@ gcc main.c -o main
 ./main
 ```
 
+### Reverse content of file
+
+**reverse algorithm**
+
+```
+Data Structure needed: stack of characters.
+Algorithm:
+1. Go on reading characters from source file until End-of-file is reached.
+2. PUSH Each character read into the stack.
+3. When done, POP characters from the stack and write them into the destination file until stack is underflow.
+```
+ 
 
 
 
