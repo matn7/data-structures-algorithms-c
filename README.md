@@ -8,6 +8,8 @@
 - If the stack is full it is said to be in **Overflow** state, and push is rejected if stack is overflow.
 - If the stack is empty it is said to be in **Underflow** state, and pop is rejected if stack is underflow.
 
+![Alt text](stack/stack.png "Stack")
+
 ### Stack used
 
 - Undo
@@ -69,10 +71,26 @@ Algorithm:
 2. PUSH Each character read into the stack.
 3. When done, POP characters from the stack and write them into the destination file until stack is underflow.
 ```
- 
+
+### Match parenthesis
+
+```
+[{(a+b)*c}/a]	well formed
+{(a+b)/c]	bad formed
+
+{(a+b)/c]	)a + b(
+AA   A		A
+||   |		|
+||   |		|
+   check	error stop scanning
+   stack
 
 
+Opening bracket to stack
+Closing bracket check stack
+```
 
+![Alt text](stack/match-parenthesis.png "Match parenthesis")
 
 
 
