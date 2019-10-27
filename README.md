@@ -92,7 +92,38 @@ Closing bracket check stack
 
 ![Alt text](stack/match-parenthesis.png "Match parenthesis")
 
+**match parenthesis algorithm**
 
+```
+error = FALSE
+
+while Not end of the expression
+  next_char = next character of input expression
+  if next_char == '(' OR next_char == '{' OR next_char == '[' then
+    push(STACK, next_char)
+  else if next_char == ')' OR next_char == '}' OR next_char == ']' then
+    if isEmpty(STACK) then
+      error = TRUE
+      break while
+    else if isOpeningMatch(stacktop(STACK), next_char) then
+      pop(STACK)
+    else
+      error = TRUE
+      break while
+    end if
+  end if
+end while
+
+if !error and !isEmpty(STACK) then
+  error = TRUE
+end if
+
+if error then
+  print "The input expression does not contain well formed brackets"  
+else
+  print "The input expression is well formed"
+end if
+```
 
 
 
