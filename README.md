@@ -432,9 +432,38 @@ PROCEDURE DEL_FROM_FRONT:
 END OF DEL_FROM_FRONT
 ```
 
+## Linked List
 
+```
+The drawbacks of arrays are removed in linked list at the cost of the benefit of having an array.
+```
 
+**Problem with arrays**
 
+- The size of array.
+- Once allocated with size it is a hazard to change the size of the array in runtime.
+- Insertion and deletion operation at any point between the first and the last index of the existing elements.
+- Adding a new element or deleting an existing element is independent to number of elements in the linked list, no shifting
+kind of activities like array are required.
+
+**Structure of linked list**
+
+- Linked list is dynamic, created on "as and when required basis".
+- You do not need to mention the size when you create a linked list.
+- Programmers need to write functions for linked list operations such as inserting and deleting an element, searching and other
+necessary DS operations.
+
+![Structure of linked list](linked_list/structure-of-linked-list.png "Structure of Linked List")
+
+**Singly linked list**
+
+**Circular linked list**
+
+![Circular linked list](linked_list/circular-linked-list.png "Circular Linked List")
+
+**Doubly linked list**
+
+![Doubly linked list](linked_list/doubly-linked-list.png "Doubly Linked List")
 
 
 
