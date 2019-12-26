@@ -465,6 +465,82 @@ necessary DS operations.
 
 ![Doubly linked list](linked_list/doubly-linked-list.png "Doubly Linked List")
 
+## Efficiency of Algorithm
+
+- Execution time
+- Memory needed by the algorithm to solve the problem
+
+- How to estimate the Execution time and amount of memory consumed?
+	- Machine
+	- Input Size
+
+- Hypothetical Machine
+	- No parallel processing supported
+	- Any simple instruction takes 1 unit of time
+	- Loops and subroutines are not simple operations
+	- Memory read or write operation takes 1 unit time
+	- Infinite memory
+	- **RAM model machine**
+
+- INPUT SIZE
+	
+### Mathematical Approach
+
+- Implement run and find execution time.
+- We will not be able to draw a general conclusion about execution time depending on n.
+- Here we are not finding execution time for all possible input size n but only for some input size.
+- Input size n is a positive integer and can be as large as possible.
+
+### Big-On notation
+
+- We want a theoretical way based upon mathematics to compare the efficiency of the algorithms.
+- A function f(n) is said to be O(g(n)) if there exists a positive constant C and a non nevative n0 such that 
+|f(n)| <= c * |g(n)|
+
+**Big Omega (The best case complexity)**
+
+- A function f(n) is said th be Omega(g(n)) if and only if there exists a positive C and non-negative integer n0
+such that
+```
+|f(n)| >= C * g(n), for all n > n0
+```
+
+**Big theta (The average case complexity)**
+
+- A function f(n) is said to be Theta(g(n)) if and only if there exists two positive constants C1 and C2 and a non-negative
+integer n0 such that
+```
+C1 * g(n) <= |f(n)| <= C2 * g(n), for all n >= n0
+```
+
+## Binary Search
+
+- Worst case complexity of binary search is O(logn)
+- The elements must be in sorted order in a list or array
+- Binary search is best applied when the elements are kept in a binary search tree
+- For binary search tree no overhead is there for keeping the elements in sorted order
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

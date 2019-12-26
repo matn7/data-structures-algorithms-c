@@ -201,6 +201,64 @@ int insertBefore(DblList *lstPtr, int target, int data) {
 	return 1;
 }
 
+int deleteFirst(DblList *lstPtr) {
+	if (lstPtr->nodeCount == 0) {
+		return 0;
+	}
+	// CASE-1 only one NODE
+	Node *p = lstPtr->head;
+	if (lstPtr->nodeCount == 1) {
+		lstPtr->head = NULL;
+		lstPtr->tail = NULL;
+	} else {
+		// CASE-2 many NODES
+		lstPtr->head = lstPtr->head->next;
+		lstPtr->head->prev = NULL;
+	}
+	free(p);
+	lstPtr->nodeCount--;
+	return 1;
+}
+
+int deleteLast(DblList *lstPtr) {
+	if (lstPtr->nodeCount == 0) {
+		return 0;
+	}	
+	Node *p = lstPtr->tail;
+	if (lstPtr->nodeCount == 1) {
+		lstPtr->head = NULL;
+		lstPtr->tail = NULL;
+	} else {
+		lstPtr->tail = lstPtr->tail->prev;
+		lstPtr->tail->next = NULL;
+	}
+	free(p);
+	lstPtr->nodeCount--;
+	return 1;
+}
+
+int deleteTarget(DblList *lstPtr, int target) {
+	Node *p = find(lstPtr, target);
+	if (p == NULL) {
+		return 0;
+	}
+	// CASE-1 target is first NODE
+	if (p == lstPtr->head) {
+		return deleteFirst(lstPtr);
+	}
+	// CASE-2 target is last NODE
+	else if (p == lstPtr->tail) {
+		return deleteLast(lstPtr);
+	}
+	else {
+		p->next->prev = p->prev;
+		p->prev->next = p->next;
+	}
+	free(p);
+	lstPtr->nodeCount--;
+	return 1;
+}
+
 int loadFromFile(DblList *lstPtr, char *fileName) {
 	FILE *inputFile = fopen(fileName, "r");
   if (inputFile == NULL) {
@@ -324,6 +382,29 @@ int main() {
               printf("Insert before failed\n");
             }
             break;
+			case 11:
+						if (deleteFirst(&list)) {
+							printf("First node deleted successfully\n");
+						} else {
+							printf("Unable to delete first node\n");
+						}
+						break;
+			case 12:
+						if (deleteLast(&list)) {
+							printf("Last node deleted successfully\n");
+						} else {
+							printf("Unable to delete last node\n");
+						}
+						break;
+			case 13:
+						printf("Enter target: ");
+						scanf("%d", &target);
+						if (deleteTarget(&list,target)) {
+							printf("Target node deleted successfully\n");
+						} else {
+							printf("Unable to delete the target node\n");
+						}
+						break;
       case 14:
             quit = 1;
             break;
