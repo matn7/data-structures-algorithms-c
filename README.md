@@ -10,6 +10,7 @@
 
 ![Alt text](stack/stack.png "Stack")
 
+
 ### Stack used
 
 - Undo
@@ -520,9 +521,177 @@ C1 * g(n) <= |f(n)| <= C2 * g(n), for all n >= n0
 - Binary search is best applied when the elements are kept in a binary search tree
 - For binary search tree no overhead is there for keeping the elements in sorted order
 
+## Recursion
 
+```console
+gcc juggler.c -lm -o juggler
+```
 
+**Recursion vs Iteration**
 
+- When both are equivalent
+	- When using tail recursion and loops
+- When loop is better
+	- Calculating factorial is not tail recursion, STACK push pop overhead. Not need the stack to solve this problem
+- When recursion is better
+	- Calculating decToBin to solve problem using iterative approach stack must by created by programmer.
+	- In recursive approach stack is created for programmer by compiler and OS will manage the stack
+	- Solution require stack explicitly
+
+## Binary tree
+
+- Hierarchical relationships of elements
+- Each node can have 0,1,2 children
+- Each node can have one parent
+
+```
+Binary tree is a set of 3 disjoint subsets, the first one is the root of the tree the other 2 subsets are either
+empty or they are themselves binary tree.
+```
+
+**Traversing a Binary Tree**
+
+- There are three Strategies:
+	- Inorder
+	- Preorder
+	- Postorder
+
+**Inorder**
+
+- Traverse left subtree
+- Access Root
+- Traverse right subtree
+
+**Preorder**
+
+- Access Root
+- Traverse left subtree
+- Traverse right subtree
+
+**Postorder**
+
+- Traverse right subtree
+- Traverse left subtree
+- Access Root
+
+**Construct Binary Tree from given list**
+
+- Inorder Traversal List:		D	B	F	E	G	A	H	C	I
+- Preorder Traversal List:	A B D E F G C H I
+- Postorder Traversal List:	D F G E B H I C A
+
+- Constructing by using Inorder + Preorder
+- Constructing by using Inorder + Postorder
+
+**Structure of Node in Binary Tree**
+
+- Self referencial structure
+
+```c
+struct Node {
+	int key;
+	struct Node *left;
+	struct Node *right;
+};
+```
+
+**Binary Search Tree**
+
+- To apply Binary Search on list/array elements, the list of array must be sorted.
+- The worst case complexity of quick sort or merge sort is O(n * logn) 
+- The worst case complexity of Binary Search is O(logn)
+
+## Heap
+
+- Comparision based sorting algorithm
+- Worst case time complexity O(nlogn)
+- Space complexity is O(1)
+- Improved version of selection sort
+- Heap sort uses HEAP Data Structure
+- Build a heap using the unsorted list data
+- The elements deleted from heap are ordered
+- These deleted elements are placed into the sorted section
+- For understanding heap sort you must know how to insert, delete and build a Heap
+
+**Almost complete binary tree**
+
+- When one level is complete we go to the next level
+- Can be represented using 1-D array
+
+```
+Heap is an almost complete binary tree such that each node should contain a key value that
+is at least or larger than it's children, with the largest key value always at the root. Such a
+heap is called a MAX Heap. For a MIN Heap each node contains key field value that is less
+than equals to the key field value of it's children and for a MIN Heap the root contains 
+smallest value.
+```
+
+```
+insertHeap(A[], n):
+	// insert element at A[n] into heap that is maintained in A[1:n-1]
+	i = n
+	item = A[n]
+	parent = floor(i/2)
+	// as long as parent index is valid and the value at parent is less than the current item
+	while (p > 0 and A[p] < item):
+		A[i] = A[p]
+		i = p
+		p = floor(i/2)
+
+	A[i] = item
+```
+
+**Delete from Heap**
+
+- Root element are always deleted
+- After deletion second largest (or smallest) occupied root
+- Move last Node to Root
+- Delete last Node
+- After copying the content of the last node the heap may not be a heap anymore
+- To restore heap at index i, we need to perform Adjust operation
+
+```
+deleteHeap(A[], heap_size):
+	if (heap_size == 0):
+		Print "Heap Empty"
+		return -1
+
+	// get the content of the root into a variable
+	item = A[1]
+	// copy the content of the last element into root
+	A[1] = A[heap_size]
+	// reduce the heap size by 1
+	heap_size = heap_size - 1
+	// call adjust operation for restoring the heap at index = 1
+	Adjust(A, 1, heap_size)
+	Return item
+```
+
+**Adjust**
+
+```
+Procedure Adjust(A[], i, n):
+	// The max heaps are well maintained at 2*i and 2*i + 1, however, Max heap is not maintained at
+	// index i, adjust to maintain MAX heap
+	j = 2 * i
+	temp = A[i]
+	while(j <= n):
+		if (j < n and A[j] < A[j+1]):
+			j = j + 1
+		
+		if (temp >= A[j])
+			break
+
+		A[j/2] = A[j]
+		j = 2 * j;
+	// after while loop is over, we found the place for item
+	A[j/2] = temp
+```
+
+**Heapify**
+
+- Building a heap from array with O(n) worst case complexity
+- If you have only one node in a tree then that is always a HEAP
 
 
 
